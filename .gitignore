@@ -1,0 +1,12 @@
+*.swp
+*.swo
+*.swn
+*.pyc
+
+__pycache__
+venv
+
+.upyt_cache
+
+
+WIFI_CONFIG.py

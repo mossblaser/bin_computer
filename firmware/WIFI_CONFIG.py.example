@@ -1,0 +1,5 @@
+COUNTRY = "GB"
+SSID = "My Network"
+PSK = "very-secure"
+
+BIN_SERVER_URL = "http://10.0.0.1:8080/"
