@@ -101,9 +101,11 @@ def relative_date(now: datetime.date, then: datetime.date) -> str:
     if 7 <= delta < 14:
         return "next week"
     elif 14 <= delta < 21:
-        return "two weeks"
+        return "week after next"
     elif 21 <= delta < 28:
         return "three weeks"
+    elif 28 <= delta < 35:
+        return "four weeks"
 
     return "very long time"
 
@@ -122,6 +124,7 @@ def ui_inkscape_actions(
     enabled_selectors = []
     for bin_colour in sorted(BIN_COLOURS):
         when = relative_date(now, bins[bin_colour]).replace(" ", "-")
+        print(bin_colour, bins[bin_colour], when)
 
         enabled_selectors.append(f".{bin_colour}.{when}")
         if when == "tomorrow":
@@ -138,6 +141,7 @@ def ui_inkscape_actions(
         f"selection-unhide;",
     ]
 
+    print()
     return "\n".join(actions)
 
 

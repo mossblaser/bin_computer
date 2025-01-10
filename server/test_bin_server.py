@@ -4,6 +4,7 @@ import datetime
 
 from bin_server import (
     relative_date,
+    DateInPastError,
 )
 
 
@@ -96,12 +97,12 @@ class TestRelativeDate:
             (
                 datetime.date(2000, 1, 5),  # Wed
                 datetime.date(2000, 1, 17),  # Mon
-                "two weeks",
+                "week after next",
             ),
             (
                 datetime.date(2000, 1, 5),  # Wed
                 datetime.date(2000, 1, 23),  # Sun
-                "two weeks",
+                "week after next",
             ),
             # Three weeks time (NB: by calendar week)
             (
@@ -114,10 +115,21 @@ class TestRelativeDate:
                 datetime.date(2000, 1, 30),  # Sun
                 "three weeks",
             ),
-            # Beyond that: a long time!
+            # Four weeks time (NB: by calendar week)
             (
                 datetime.date(2000, 1, 5),  # Wed
                 datetime.date(2000, 1, 31),  # Mon
+                "four weeks",
+            ),
+            (
+                datetime.date(2000, 1, 5),  # Wed
+                datetime.date(2000, 2, 6),  # Sun
+                "four weeks",
+            ),
+            # Beyond that: a long time!
+            (
+                datetime.date(2000, 1, 5),  # Wed
+                datetime.date(2000, 2, 7),  # Mon
                 "very long time",
             ),
         ],
@@ -126,5 +138,5 @@ class TestRelativeDate:
         assert relative_date(now, then) == exp
 
     def test_in_past(self) -> None:
-        with pytest.raises(ValueError):
+        with pytest.raises(DateInPastError):
             relative_date(datetime.date(2000, 1, 1), datetime.date(1999, 1, 1))
