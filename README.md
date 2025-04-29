@@ -4,6 +4,8 @@ Bin Computer: A computer for your bins!
 **A battery-powered E-Ink gadget which tells you when the bins need to go
 out.**
 
+![The bin computer showing the next bin collections](./case/photo.jpg)
+
 A quick-and-dirty project built on the [Pimoroni Badger 2040
 W](https://shop.pimoroni.com/products/badger-2040-w?variant=40514062188627)
 paltform and crudely scraping the [Stockport bin collection
